@@ -1,0 +1,38 @@
+capacity: 16
+horizons: [1, 4, 16, 64]
+horizon_weights: [0.25, 0.25, 0.25, 0.25]
+
+predictor:
+  d_in: 2048
+  d_model: 512
+  n_layers: 4
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.1
+  local_context_len: 8
+
+slow_basis:
+  rank: 32
+  short_lag: 1
+  long_lag: 32
+  regularization: 0.001
+
+utility:
+  rollout_steps: 32
+  one_step_weight: 0.5
+  state_neighbors: 32
+  action_neighbors: 32
+  uncertainty_multiplier: 1.0
+
+controller:
+  alpha_slow: 0.05
+  alpha_boundary: 1.0
+  tau_utility: 0.05
+  tau_support: 0.5
+  tau_departure: 1.0
+  departure_temperature: 0.5
+  tau_gate: 0.5
+  tau_reachability: 3.0
+  history_window: 32
+  warmup: 16
+  minimum_scale: 0.00001

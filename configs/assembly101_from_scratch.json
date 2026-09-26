@@ -1,0 +1,19 @@
+{
+  "protocol_id": "space_assembly101_from_scratch_v1",
+  "slow_basis": {
+    "rank": 32,
+    "short_lag": 1,
+    "long_lag": 32,
+    "regularization": 0.001,
+    "training_participants": 29
+  },
+  "utility_bank": {
+    "capacity": 16,
+    "states_per_participant": 64,
+    "selection_seed": 20260813,
+    "reservoir_behavior_seed": 0,
+    "reservoir_reference_seed": 20260813,
+    "rollout_steps": 32,
+    "precision": "bf16"
+  }
+}

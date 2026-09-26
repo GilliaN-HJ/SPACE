@@ -1,0 +1,47 @@
+project:
+  name: assembly101_single_view_participant_disjoint_v1
+  output_dir: outputs/assembly101_predictors
+data:
+  latent_dir: data/latents/assembly101_tsm_v1_stride15
+  manifest: data/latents/assembly101_tsm_v1_stride15/manifest.json
+  encoder_id: official_assembly101_tsm_release
+  d_in: 2048
+predictor:
+  d_model: 512
+  n_layers: 4
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.1
+  activation: gelu
+  pre_norm: true
+  local_context_len: 8
+  horizons: [1, 4, 16, 64]
+  horizon_weights: [0.25, 0.25, 0.25, 0.25]
+  memory_budget: 16
+  target_loss: cosine
+  memory_dropout: 0.15
+utility_estimator:
+  d_utility: 256
+  n_layers: 2
+  n_heads: 4
+  d_ff: 1024
+  dropout: 0.1
+  lambda_reg: 1.0
+  lambda_rank: 0.25
+  lambda_evict: 0.25
+training:
+  precision: bf16
+  batch_size: 128
+  num_workers: 8
+  predictor_epochs: 30
+  utility_epochs: 25
+  predictor_lr: 0.0003
+  utility_lr: 0.0003
+  weight_decay: 0.05
+  warmup_ratio: 0.05
+  grad_clip_norm: 1.0
+  random_seeds: [0, 1, 2]
+evaluation:
+  policies: [no_memory, fifo, reservoir, two_proposal_oracle, slot_oracle]
+  policy_seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  bootstrap_samples: 10000
