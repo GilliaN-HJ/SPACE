@@ -1,5 +1,7 @@
 # SPACE: Sparse Predictive Attractor via Counterfactual Eviction
 
+**Paper:** [arXiv:2609.32592](https://arxiv.org/abs/2609.32592)
+
 ## Installation
 
 The reference environment uses Python 3.10, PyTorch 2.5.1, and CUDA 12.1.
